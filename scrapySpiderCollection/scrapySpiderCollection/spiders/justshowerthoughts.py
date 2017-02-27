@@ -14,7 +14,7 @@ class JustshowerthoughtsSpider(scrapy.Spider):
         posts = response.xpath("normalize-space(//div[@class='post-content']/div[@class='body-text']/p/text())").extract()
         for post in posts:
             item = TextItem()
-            item['text'] = post
+            item['content'] = post
             yield item
 
         next_page = response.xpath("//div[@id='pagination']/a[@class='next']/@href").extract_first()
